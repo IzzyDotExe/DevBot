@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dsharpplus" Version="4.2.0-nightly-01062" />
+    <PackageReference Include="dsharpplus.commandsnext" Version="4.2.0-nightly-01062" />
+    <PackageReference Include="DSharpPlus.Interactivity" Version="4.2.0-nightly-01062" />
+    <PackageReference Include="DSharpPlus.Rest" Version="4.2.0-nightly-01062" />
+    <PackageReference Include="DSharpPlus.SlashCommands" Version="4.2.0-nightly-01062" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.json" Version="6.0.2-mauipre.1.22054.8" />
+    <PackageReference Include="npgsql" Version="6.0.2" />
+    <PackageReference Include="serilog" Version="2.10.0" />
+    <PackageReference Include="serilog.extensions.logging" Version="3.1.0" />
+    <PackageReference Include="serilog.sinks.console" Version="4.0.1" />
+  </ItemGroup>
+
+</Project>

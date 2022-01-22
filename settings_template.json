@@ -1,0 +1,19 @@
+{
+    "Bot" : {
+        "Token" : "token"
+    },
+    "Wakatime" : {
+        "clientid" : "wakatime app clientID",
+        "clientsecret" : "wakatime app client secret"
+    },
+    "github" : {
+        "clientid" : "github app clientid",
+        "clientsecret" : "github app client secret"
+    },
+    "postgres" : {
+        "Host" : "localhost",
+        "username" : "postgres",
+        "passwd" : "password",
+        "database" : "psql"
+    }
+}
