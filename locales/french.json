@@ -1,0 +1,5 @@
+{
+    "devbot.modules.utils.ping.wslatency" : "Delai du websocket",
+    "devbot.modules.utils.ping.msglatency" : "Delai du message",
+    "devbot.services.commandhandler.errors.failedcheck.requireId" : "Vous n'avez pas la permission d'utilizer cet fonction"
+}

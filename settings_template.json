@@ -1,6 +1,11 @@
 {
-    "Bot" : {
-        "Token" : "token"
+    "discord" : {
+        "Token" : "token",
+        "clientid" : "id",
+        "clientsecret" : "secret",
+        "redirect" : "redirect",
+        "clientowner" : 393165866285662208
+
     },
     "Wakatime" : {
         "clientid" : "wakatime app clientID",
@@ -15,5 +20,9 @@
         "username" : "postgres",
         "passwd" : "password",
         "database" : "psql"
+    },
+    "flask" : {
+        "appsecret" : "app secret key",
+        "pythonpath" : "path to py executable"
     }
 }

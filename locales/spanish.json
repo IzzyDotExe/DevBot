@@ -1,0 +1,5 @@
+{
+    "devbot.modules.utils.ping.wslatency" : "latencia del websocket",
+    "devbot.modules.utils.ping.msglatency" : "latencia del mensaje",
+    "devbot.services.commandhandler.errors.failedcheck.requireId" : "no tienes el permiso para usar esta funcion"
+}

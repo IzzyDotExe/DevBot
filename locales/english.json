@@ -1,0 +1,5 @@
+{
+    "devbot.modules.utils.ping.wslatency" : "Websocket latency",
+    "devbot.modules.utils.ping.msglatency" : "Message Roundtrip",
+    "devbot.services.commandhandler.errors.failedcheck.requireId" : "You do not have permission to use this command"
+}

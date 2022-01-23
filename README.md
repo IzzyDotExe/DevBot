@@ -9,4 +9,4 @@ A discord bot made for developers around the world!
 - Fetching info on github repos
 - StackExchange integration
 - code formatter / deobfuscator
-- much more
+- Github repo management

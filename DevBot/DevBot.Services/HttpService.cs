@@ -6,22 +6,15 @@ using System.Threading.Tasks;
 
 namespace DevBot.Services {
 
-    class Http {
+    class HttpService {
 
         private static readonly HttpClient webClient = new HttpClient();
 
-        public Http() {
+        public HttpService() {
 
 
 
         }
-
-        public async Task Wakatime_Login() {
-
-            
-
-        }
-
 
     }
 
