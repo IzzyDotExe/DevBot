@@ -21,6 +21,7 @@ namespace DevBot.Services {
             this._settings = settings;
             this._client = client;
             this._provider = provider;
+            Log.Logger.Information("Dashboard service loaded!");
 
         }
 
@@ -37,6 +38,7 @@ namespace DevBot.Services {
                 string result = await reader.ReadToEndAsync();
                 Log.Logger.Information(this.RemoveSpecialCharacters(result));
             }
+            
         }
 
         private string RemoveSpecialCharacters(string str) {

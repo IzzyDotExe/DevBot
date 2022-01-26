@@ -1,5 +1,6 @@
 ﻿using DSharpPlus;
 using DSharpPlus.CommandsNext;
+using DSharpPlus.Interactivity.Extensions;
 using DSharpPlus.SlashCommands;
 using System;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using Serilog;
 using System.IO;
 using DevBot.Modules;
 using DevBot.Services;
+using DevBot.Services.API;
 
 
 
@@ -36,12 +38,19 @@ namespace DevBot {
             var discordClient = services.GetRequiredService<DiscordClient>();
             var webdashboard = services.GetRequiredService<DashboardService>();
             var localeService = services.GetRequiredService<LocaleService>();
-
+            var stackService = services.GetRequiredService<StackExchangeService>();
+            services.GetRequiredService<UptimeService>();
+            services.GetRequiredService<InteractionHandler>();
 
             await dbservice.CreateConnection();
             await discordClient.ConnectAsync();
             localeService.BuildLocales();
             await dbservice.BuildCaches();
+            
+            discordClient.Ready += ( async (c, e) => {
+                Log.Logger.Information($"Logged in as {discordClient.CurrentUser}");
+                Log.Logger.Information("Ready!");
+            });
             // await webdashboard.Start();
 
             await Task.Delay(-1);
@@ -72,7 +81,9 @@ namespace DevBot {
                         .AddSingleton<CommandHandler>()
                         .AddSingleton<LocaleService>()
                         .AddSingleton<DashboardService>()
-
+                        .AddSingleton<UptimeService>()
+                        .AddSingleton<StackExchangeService>()
+                        .AddSingleton<InteractionHandler>()
                         .BuildServiceProvider();
 
             return services; 

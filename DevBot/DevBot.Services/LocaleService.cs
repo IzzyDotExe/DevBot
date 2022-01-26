@@ -1,4 +1,6 @@
 using DSharpPlus;
+using DSharpPlus.SlashCommands;
+using DSharpPlus.Entities;
 using System.Collections.Generic;
 using System;
 using System.IO;
@@ -9,8 +11,21 @@ using Serilog;
 
 namespace DevBot.Services {
     
+    enum Language
+    {
+        [ChoiceName("English")]
+        english,
+        [ChoiceName("Spanish")]
+        spanish,
+        [ChoiceName("French")]
+        french
+    }
+
     class LocaleService {
 
+        class NoLocaleTextSet : Exception {
+            public NoLocaleTextSet(string message) : base(message) {}
+        }
         private readonly IConfigurationRoot _settings;
         private readonly DiscordClient _client;
         private readonly DbService _dbService;
@@ -39,13 +54,19 @@ namespace DevBot.Services {
 
         }
 
-        public string TranslatableText(string key, ulong guildid) {
+        public string TranslatableText(string key, ulong userId) {
 
-            string guildlocalename = _dbService.FetchLocale(guildid);
+            string userlocalename = _dbService.FetchLocale(userId);
 
-            IConfigurationRoot guildLocale = _locales[guildlocalename];
+            IConfigurationRoot userLocale = _locales[userlocalename];
 
-            return guildLocale.GetSection(key).Value;
+            string translatedText = userLocale.GetSection(key).Value;
+
+            if (translatedText is null) {
+                throw(new NoLocaleTextSet($"{key} has no locale text set for language: {userlocalename}"));
+            }
+
+            return translatedText;
     
         }
 

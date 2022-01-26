@@ -1,5 +1,12 @@
 {
     "devbot.modules.utils.ping.wslatency" : "Websocket latency",
     "devbot.modules.utils.ping.msglatency" : "Message Roundtrip",
-    "devbot.services.commandhandler.errors.failedcheck.requireId" : "You do not have permission to use this command"
+    "devbot.services.commandhandler.errors.failedcheck.requireId" : "You do not have permission to use this command",
+    "devbot.modules.utils.setlocale.success" : "🇬🇧 Locale is now set to English",
+    "devbot.modules.utils.uptime" : "Uptime",
+    "devbot.modules.utils.uptime.days" : "Days",
+    "devbot.modules.utils.uptime.hours" : "Hrs",
+    "devbot.modules.utils.uptime.minutes" : "Mins",
+    "devbot.modules.utils.uptime.seconds" : "Sec"
+
 }

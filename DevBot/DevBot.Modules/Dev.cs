@@ -1,5 +1,6 @@
 using DSharpPlus.SlashCommands;
 using DSharpPlus;
+using DSharpPlus.CommandsNext.Attributes;
 using DevBot.Services;
 using System.Threading.Tasks;
 using System;
@@ -15,11 +16,11 @@ namespace DevBot.Modules {
             this.UserId = userId;
         }
 
-        public override async Task<bool> ExecuteChecksAsync(InteractionContext ctx) {
+        public override Task<bool> ExecuteChecksAsync(InteractionContext ctx) {
             if (ctx.User.Id != UserId)
-                return false;
+                return Task.FromResult(false);
             else
-                return true;
+                return Task.FromResult(true);
         }
     }
 
@@ -33,7 +34,7 @@ namespace DevBot.Modules {
             public IConfigurationRoot _settings {get; set;}
                     
             [SlashCommand("restart", "Restart the dashboard")]
-            [RequireId(393165866285662208)]
+            [RequireOwner]
             public async Task RestartCmd(InteractionContext ctx) {
 
                 
@@ -45,7 +46,7 @@ namespace DevBot.Modules {
             }
             
             [SlashCommand("start", "Start the dashboard")]
-            [RequireId(393165866285662208)]
+            [RequireOwner]
             public async Task StartCmd(InteractionContext ctx) {
                 await ctx.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, new DSharpPlus.Entities.DiscordInteractionResponseBuilder() {
                     IsEphemeral=true
@@ -56,7 +57,7 @@ namespace DevBot.Modules {
             }
 
             [SlashCommand("stop", "Stop the dashboard")]
-            [RequireId(393165866285662208)]
+            [RequireOwner]
             public async Task StopCmd(InteractionContext ctx) {
 
                 await ctx.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, new DSharpPlus.Entities.DiscordInteractionResponseBuilder() {

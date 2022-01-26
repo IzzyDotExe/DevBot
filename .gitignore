@@ -5,3 +5,4 @@ cmds
 settings.json
 Devbot/obj
 __pycache__
+Devbot.Dashboard/static/images

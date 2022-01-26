@@ -18,7 +18,7 @@ namespace DevBot.Services {
         private readonly string _connectionString;
         private NpgsqlConnection _connection;
 
-        private Dictionary<string, Dictionary<long, string>> _guildSettingsCache = new Dictionary<string, Dictionary<long, string>>();
+        private Dictionary<string, Dictionary<long, string>> _userSettingsCache = new Dictionary<string, Dictionary<long, string>>();
 
         public DbService (IConfigurationRoot settings, DiscordClient client) {
             this._settings = settings;
@@ -30,22 +30,24 @@ namespace DevBot.Services {
                 Password = _settings.GetSection("postgres:passwd").Value,
                 Database = _settings.GetSection("postgres:database").Value
             }.ConnectionString;
+
+            Log.Logger.Information("Database service loaded!");
         }
         
         public async Task BuildCaches() {
-            await using (var cmd = new NpgsqlCommand("SELECT * FROM guildsettings", _connection)) {
+            await using (var cmd = new NpgsqlCommand("SELECT * FROM usersettings", _connection)) {
                 await using (var reader = await cmd.ExecuteReaderAsync()) {
 
                     while (await reader.ReadAsync()) {
-                        long gid = reader.GetInt64(reader.GetOrdinal("guild_id"));
-                        string setting = reader.GetString(reader.GetOrdinal("guild_setting"));
-                        string value = reader.GetString(reader.GetOrdinal("guild_value"));
+                        long gid = reader.GetInt64(reader.GetOrdinal("user_id"));
+                        string setting = reader.GetString(reader.GetOrdinal("user_setting"));
+                        string value = reader.GetString(reader.GetOrdinal("user_value"));
 
-                        if (!_guildSettingsCache.ContainsKey(setting)) {
-                            _guildSettingsCache[setting] = new Dictionary<long, string>();
+                        if (!_userSettingsCache.ContainsKey(setting)) {
+                            _userSettingsCache[setting] = new Dictionary<long, string>();
                         }
 
-                        _guildSettingsCache[setting][gid] = value;
+                        _userSettingsCache[setting][gid] = value;
                     }
                 }
             }
@@ -57,28 +59,29 @@ namespace DevBot.Services {
             await this._connection.OpenAsync();
         }
 
-        public async Task RecordId(long userid) {
-            await using (var cmd = new NpgsqlCommand("INSERT INTO userdata (user_id) VALUES ($1)", this._connection)) {
-                cmd.Parameters.AddWithValue(userid);
-                await cmd.ExecuteNonQueryAsync();
-            } 
-        }
-
-        public string FetchLocale(ulong guildId) {
+        public string FetchLocale(ulong userId) {
             
-            return _guildSettingsCache["locale"][(long)guildId];
+            try {
+                return _userSettingsCache["locale"][(long)userId];
+            } catch (KeyNotFoundException) {
+                return "english";
+            }
+            
 
         }
 
-        public async Task SetLocale(ulong guildId, string locale) {
+        public async Task SetLocale(ulong userId, string locale) {
 
-            await using (var cmd = new NpgsqlCommand("UPDATE guildsettings SET guild_value = $1 WHERE guild_setting = 'locale' AND guild_id = $2")) {
+            await using (var cmd = new NpgsqlCommand("INSERT INTO usersettings (user_id, user_setting, user_value) VALUES ($1, 'locale', $2) ON CONFLICT ON CONSTRAINT usersettings_pkey DO UPDATE SET user_value = $2 WHERE usersettings.user_setting = 'locale' AND usersettings.user_id = $1", _connection)) {
+                cmd.Parameters.AddWithValue((long) userId);
                 cmd.Parameters.AddWithValue(locale);
-                cmd.Parameters.AddWithValue((long)guildId);
                 await cmd.ExecuteNonQueryAsync();
             }
 
-            _guildSettingsCache["locale"][(long)guildId] = locale;
+            if (!_userSettingsCache.ContainsKey("locale")) {
+                _userSettingsCache["locale"] = new Dictionary<long, string>();
+            }
+            _userSettingsCache["locale"][(long)userId] = locale;
         }
 
     }

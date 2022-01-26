@@ -1,0 +1,27 @@
+body {
+
+    margin: 0;
+
+}
+
+nav {
+
+    display: flex;
+
+    position: fixed;
+    width: 100%;
+    height: 80px;
+
+    background-color: rgb(15, 1, 80);
+    
+}
+
+nav > section {
+    flex: 1;
+    display: flex;
+}
+
+nav > section > img {
+    width: 80px;
+    border-radius: 50%;
+}

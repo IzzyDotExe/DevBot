@@ -1,5 +1,11 @@
 {
     "devbot.modules.utils.ping.wslatency" : "Delai du websocket",
     "devbot.modules.utils.ping.msglatency" : "Delai du message",
-    "devbot.services.commandhandler.errors.failedcheck.requireId" : "Vous n'avez pas la permission d'utilizer cet fonction"
+    "devbot.services.commandhandler.errors.failedcheck.requireId" : "Vous n'avez pas la permission d'utilizer cet fonction",
+    "devbot.modules.utils.setlocale.success" : "🇫🇷 La langage est maintenant en francais",
+    "devbot.modules.utils.uptime" : "Disponibilité",
+    "devbot.modules.utils.uptime.days" : "Jrs",
+    "devbot.modules.utils.uptime.hours" : "Hrs", 
+    "devbot.modules.utils.uptime.minutes" : "Mins",
+    "devbot.modules.utils.uptime.seconds" : "Sec"
 }

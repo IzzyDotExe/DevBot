@@ -24,5 +24,10 @@
     "flask" : {
         "appsecret" : "app secret key",
         "pythonpath" : "path to py executable"
+    },
+    "stack" : {
+        "clientid" : "stackapps clientid",
+        "clientsecret" : "stackapps clientsecret",
+        "clientkey" : "stackapss clientkey"
     }
 }

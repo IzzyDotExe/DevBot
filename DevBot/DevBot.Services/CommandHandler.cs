@@ -29,11 +29,25 @@ namespace DevBot.Services {
 
             slashcommands.RegisterCommands<Utils>(707260999496892436);
             slashcommands.RegisterCommands<Dev>(707260999496892436);
+            slashcommands.RegisterCommands<StackCmds>(707260999496892436);
 
-            Log.Logger.Information("Commands loaded!");
+            Log.Logger.Information("Command Handler loaded!");
 
             slashcommands.SlashCommandErrored += SlashCommandError;
+            slashcommands.ContextMenuErrored += ContextMenuError;
 
+        }
+
+        public async Task ContextMenuError(SlashCommandsExtension slashcommands, ContextMenuErrorEventArgs eventArgs) {
+            if (eventArgs.Exception is SlashExecutionChecksFailedException slex) {
+                foreach (var check in slex.FailedChecks)
+                    if (check is RequireId att)
+                        await eventArgs.Context.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, new DiscordInteractionResponseBuilder(){
+                            IsEphemeral = true
+                            }.WithContent($"You do not have permission to use this command"));
+            } else {
+                Log.Logger.Error(eventArgs.Exception.ToString());
+            }
         }
 
         public async Task SlashCommandError(SlashCommandsExtension slashcommands, SlashCommandErrorEventArgs eventArgs) {
