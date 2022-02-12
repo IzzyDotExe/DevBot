@@ -7,7 +7,16 @@
     "devbot.modules.utils.uptime.days" : "Días",
     "devbot.modules.utils.uptime.hours" : "Horas",
     "devbot.modules.utils.uptime.minutes" : "Min",
-    "devbot.modules.utils.uptime.seconds" : "Segs"
+    "devbot.modules.utils.uptime.seconds" : "Segs",
+    "devbot.modules.stackexchange.notfound.overflow" : "⋅ I couldn't find anything on StackOverflow!",
+    "devbot.modules.stackexchange.notfound.ubuntu" : "⋅ I couldn't find anything on AskUbuntu!",
+    "devbot.modules.stackexchange.notfound.check" : "Please check your spelling and word choice",
+    "devbot.modules.stackexchange.asks" : "Asks...",
+    "devbot.modules.stackexchange.score" : "Score: ",
+    "devbot.modules.stackexchange.views" : "Views: ",
+    "devbot.modules.stackexchange.activity" : "Last Activity: ",
+    "devbot.modules.stackexchange.result" : "Result"
+
 
 
 }

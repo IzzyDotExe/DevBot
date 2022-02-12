@@ -5,12 +5,11 @@
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
     <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="dsharpplus" Version="4.2.0-nightly-01063" />
     <PackageReference Include="dsharpplus.commandsnext" Version="4.2.0-nightly-01063" />
     <PackageReference Include="DSharpPlus.Interactivity" Version="4.2.0-nightly-01063" />
     <PackageReference Include="DSharpPlus.Rest" Version="4.2.0-nightly-01063" />

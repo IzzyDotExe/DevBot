@@ -100,7 +100,7 @@ namespace DevBot.Modules
             var embed = new DiscordEmbedBuilder()
                 .WithAuthor(_client.CurrentUser.Username, null, _client.CurrentUser.AvatarUrl)
                 .WithColor(DiscordColor.PhthaloBlue)
-                .WithDescription($"**{uptimeMsg}:** ``{uptime.Days}{uptimeDays} {uptime.Hours}{uptimeHours} {uptime.Minutes}{uptimeMinutes} {uptime.Seconds}{uptimeSeconds}``");
+                .WithDescription($"**{uptimeMsg}:`** ``{uptime.Days}{uptimeDays} {uptime.Hours}{uptimeHours} {uptime.Minutes}{uptimeMinutes} {uptime.Seconds}{uptimeSeconds}``");
 
             var response = new DiscordInteractionResponseBuilder() {}
                             .AddEmbed(embed);
@@ -120,10 +120,10 @@ namespace DevBot.Modules
                 new DiscordSelectComponentOption("Server Avatar", "server", "Get the user's server avatar", false, new DiscordComponentEmoji("🖥️"))
             };
             
-            var selectmenu = new DiscordSelectComponent("custom_id_for_select_menu", "placeholder", selectOptions, false, 1, 1);
+            var selectmenu = new DiscordSelectComponent("avatar_component", "placeholder", selectOptions, false, 1, 1);
 
             var res = new DiscordInteractionResponseBuilder()
-            .WithContent("Hello World")
+            .WithContent(user.GetAvatarUrl(ImageFormat.Auto))
             .AddComponents(selectmenu);
 
             try {
@@ -157,7 +157,7 @@ namespace DevBot.Modules
 
             } else {
                 await ctx.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, new DiscordInteractionResponseBuilder()
-                                                                                            .WithContent("No Json Detected"));
+                                                                                            .WithContent(_locale.TranslatableText("devbot.modules.utils.format.json.notfound", ctx.User.Id)));
                 return;
             }
 
@@ -173,7 +173,6 @@ namespace DevBot.Modules
 
 
         }
-
+            
     }
-
 }

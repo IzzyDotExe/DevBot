@@ -45,7 +45,7 @@ namespace DevBot.Services {
             string[] locales = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "locales"), "*.json");
 
             foreach (string locale in locales) {
-                string localename = locale.Split("\\locales\\")[1].Split(".json")[0];
+                string localename = locale.Split("/locales/")[1].Split(".json")[0];
                 IConfigurationRoot localeObject = new ConfigurationBuilder()
                                                 .AddJsonFile(locale)
                                                 .Build();

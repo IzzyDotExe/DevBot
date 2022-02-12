@@ -7,5 +7,14 @@
     "devbot.modules.utils.uptime.days" : "Jrs",
     "devbot.modules.utils.uptime.hours" : "Hrs", 
     "devbot.modules.utils.uptime.minutes" : "Mins",
-    "devbot.modules.utils.uptime.seconds" : "Sec"
+    "devbot.modules.utils.uptime.seconds" : "Sec",
+    "devbot.modules.stackexchange.notfound.overflow" : "⋅ Je n'ai rien trouve sur StackOverflow!",
+    "devbot.modules.stackexchange.notfound.ubuntu" : "⋅ Je n'ai rien trouve sur AskUbuntu!",
+    "devbot.modules.stackexchange.notfound.check" : "Please check your spelling and word choice",
+    "devbot.modules.stackexchange.asks" : "Demande...",
+    "devbot.modules.stackexchange.score" : "Pointage: ",
+    "devbot.modules.stackexchange.views" : "Visionnements: ",
+    "devbot.modules.stackexchange.activity" : "Dernière Activité: ",
+    "devbot.modules.stackexchange.result" : "Resultat"
+
 }
