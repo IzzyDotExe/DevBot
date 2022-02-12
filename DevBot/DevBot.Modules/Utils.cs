@@ -9,6 +9,7 @@ using System.Diagnostics;
 using DSharpPlus.Entities;
 using DevBot.Services;
 using Serilog;
+using DevBot.Services.API;
 using Newtonsoft.Json.Linq;
 using System.Net;
 
@@ -20,7 +21,7 @@ namespace DevBot.Modules
         public DbService _dbService {get; set;}
         public DiscordClient _client {get; set;}
         public LocaleService _locale {get; set;}
-
+        public GithubService _github {get; set;}
         public UptimeService _uptimeService {get; set;}
         
         [SlashCommand("ping", "Find out the bot's latency")]
@@ -48,7 +49,7 @@ namespace DevBot.Modules
                             .AddEmbed(embed);
 
             await ctx.CreateResponseAsync(DSharpPlus.InteractionResponseType.ChannelMessageWithSource, response);
-
+            
         }
 
         [SlashCommand("locale", "Set the your locale")]

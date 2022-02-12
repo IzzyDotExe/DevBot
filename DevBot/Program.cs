@@ -39,6 +39,7 @@ namespace DevBot {
             var webdashboard = services.GetRequiredService<DashboardService>();
             var localeService = services.GetRequiredService<LocaleService>();
             var stackService = services.GetRequiredService<StackExchangeService>();
+            var githubService = services.GetRequiredService<GithubService>();
             services.GetRequiredService<UptimeService>();
             services.GetRequiredService<InteractionHandler>();
 
@@ -84,6 +85,7 @@ namespace DevBot {
                         .AddSingleton<UptimeService>()
                         .AddSingleton<StackExchangeService>()
                         .AddSingleton<InteractionHandler>()
+                        .AddSingleton<GithubService>()
                         .BuildServiceProvider();
 
             return services; 

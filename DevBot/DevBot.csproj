@@ -19,6 +19,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.json" Version="6.0.2-mauipre.1.22054.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="npgsql" Version="6.0.2" />
+    <PackageReference Include="Octokit" Version="0.50.0" />
     <PackageReference Include="serilog" Version="2.10.0" />
     <PackageReference Include="serilog.extensions.logging" Version="3.1.0" />
     <PackageReference Include="serilog.sinks.console" Version="4.0.1" />

@@ -13,6 +13,6 @@ using Serilog;
 
 namespace DevBot.Modules {
     class Github : ApplicationCommandModule {
-        
+
     }
 }

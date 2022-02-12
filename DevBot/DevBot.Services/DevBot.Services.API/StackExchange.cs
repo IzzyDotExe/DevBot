@@ -105,7 +105,7 @@ namespace DevBot.Services.API {
 
     class StackExchangeService {
         private readonly IConfigurationRoot _settings;
-        private readonly HttpClient webClient = new HttpClient();
+        private readonly HttpClient webClient;
 
         private readonly string[] topTagsStackOverflow = new string[] {"javascript",
                                                           " js", 
@@ -188,6 +188,7 @@ namespace DevBot.Services.API {
                                                                    "virtualbox"};
         public StackExchangeService(IConfigurationRoot settings) {
             _settings = settings;
+            webClient = new HttpClient();
         }
 
         public List<string> parseforStackTags(string input) {

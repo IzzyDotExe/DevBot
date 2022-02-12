@@ -40,6 +40,7 @@ namespace DevBot.Modules {
                 
                 pages.Add(new Page(embed: embed));
                 result ++;
+                
             }
 
             var interactivity = _client.GetInteractivity();
